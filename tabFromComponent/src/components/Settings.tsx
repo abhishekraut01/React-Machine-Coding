@@ -1,4 +1,16 @@
-const Settings = () => {
+import type { ChangeEvent } from "react";
+import type { PageProps } from "./Navbar";
+
+const Settings: React.FC<PageProps> = ({ data, setData }) => {
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setData((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
   return (
     <div className="h-screen flex justify-center items-center bg-orange-300">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6">
@@ -18,6 +30,8 @@ const Settings = () => {
               type="radio"
               id="Dark"
               name="theme"
+              value={data.Theme}
+              onChange={handleChange}
               className="h-5 w-5 text-blue-500 focus:ring-2 focus:ring-blue-400"
             />
             <span className="text-lg text-gray-700">Dark</span>
@@ -32,6 +46,8 @@ const Settings = () => {
               type="radio"
               id="Light"
               name="theme"
+              value={data.Theme}
+              onChange={handleChange}
               className="h-5 w-5 text-blue-500 focus:ring-2 focus:ring-blue-400"
             />
             <span className="text-lg text-gray-700">Light</span>
