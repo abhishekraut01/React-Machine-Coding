@@ -28,8 +28,8 @@ const Profile: React.FC<PageProps> = ({ data, setData }) => {
             </label>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="Name"
+              name="Name"
               value={data.Name}
               onChange={handleChange}
               placeholder="Enter Name"
@@ -47,11 +47,10 @@ const Profile: React.FC<PageProps> = ({ data, setData }) => {
             </label>
             <input
               type="text"
-              id="college"
-              onChange={handleChange}
-
+              id="College"
+              name="College"
               value={data.College}
-              name="college"
+              onChange={handleChange}
               placeholder="Enter College"
               className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
@@ -67,11 +66,10 @@ const Profile: React.FC<PageProps> = ({ data, setData }) => {
             </label>
             <input
               type="text"
-              id="designation"
-              onChange={handleChange}
-
+              id="Designation"
+              name="Designation"
               value={data.Designation}
-              name="designation"
+              onChange={handleChange}
               placeholder="Enter Designation"
               className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
