@@ -1,5 +1,16 @@
-const Skills = () => {
+import type { ChangeEvent } from "react";
+import type { PageProps } from "./Navbar";
+
+const Skills:React.FC<PageProps> = ({data , setData}) => {
   const skillList = ["HTML", "CSS", "JavaScript", "ReactJS", "NodeJS"];
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
+      setData((prev) => ({
+        ...prev,
+        [name]: value
+      }))
+    }
 
   return (
     <div className="h-screen flex justify-center items-center bg-pink-300">
@@ -18,6 +29,8 @@ const Skills = () => {
               <input
                 type="checkbox"
                 id={skill}
+                value={data.skills}
+                onChange={handleChange}
                 name={skill}
                 className="h-5 w-5 rounded-md border-gray-300 text-blue-500 focus:ring-2 focus:ring-blue-400"
               />

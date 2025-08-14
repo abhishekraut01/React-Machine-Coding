@@ -53,15 +53,17 @@ const Settings: React.FC<PageProps> = ({ data, setData }) => {
             <span className="text-lg text-gray-700">Light</span>
           </label>
 
-          {/* Save Button */}
-          <button
-            type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition"
-          >
-            Save Settings
-          </button>
         </form>
+        <button
+          onSubmit={() => {
+            console.log(data)
+          }}
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition"
+        >
+          Submit data
+        </button>
       </div>
+
     </div>
   );
 };
