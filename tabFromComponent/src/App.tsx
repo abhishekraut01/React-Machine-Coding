@@ -21,16 +21,19 @@ const NavigationHeadings = [
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState(0);
-  const [data , setData] = useState({
-    name:String,
-    
-  })
+  const [data, setData] = useState({
+    Name: "",
+    College: "",
+    Designation: "",
+    skills: [] as string[],
+    Theme: "",
+  });
   const CurrentComponent = NavigationHeadings[currentTab].component;
 
   return (
     <div className="h-screen w-full bg-red-300 overflow-hidden">
       <Navbar headings={NavigationHeadings} setCurrentTab={setCurrentTab} />
-      <CurrentComponent />
+      <CurrentComponent data={data} setData={setData} />
     </div>
   );
 }

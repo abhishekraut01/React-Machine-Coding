@@ -1,7 +1,26 @@
-type NavigationItem = {
-  title: string;
-  component: React.FC;
+export type PageProps = {
+  data: {
+    Name: string;
+    College: string;
+    Designation: string;
+    skills: string[];
+    Theme: string;
+  };
+  setData: React.Dispatch<React.SetStateAction<{
+    Name: string;
+    College: string;
+    Designation: string;
+    skills: string[];
+    Theme: string;
+  }>>;
 };
+
+
+export type NavigationItem = {
+  title: string;
+  component: React.FC<PageProps>;
+};
+
 
 interface NavigationItemProps {
   headings: NavigationItem[];

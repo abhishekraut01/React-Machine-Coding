@@ -1,4 +1,15 @@
-const Profile = () => {
+import type { ChangeEvent } from "react";
+import type { PageProps } from "./Navbar";
+
+const Profile: React.FC<PageProps> = ({ data, setData }) => {
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setData((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
   return (
     <div className="h-screen flex justify-center items-center bg-green-300">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6">
@@ -19,6 +30,8 @@ const Profile = () => {
               type="text"
               id="name"
               name="name"
+              value={data.Name}
+              onChange={handleChange}
               placeholder="Enter Name"
               className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
@@ -35,6 +48,9 @@ const Profile = () => {
             <input
               type="text"
               id="college"
+              onChange={handleChange}
+
+              value={data.College}
               name="college"
               placeholder="Enter College"
               className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -52,6 +68,9 @@ const Profile = () => {
             <input
               type="text"
               id="designation"
+              onChange={handleChange}
+
+              value={data.Designation}
               name="designation"
               placeholder="Enter Designation"
               className="w-full rounded-md border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -62,5 +81,7 @@ const Profile = () => {
     </div>
   );
 };
+
+
 
 export default Profile;
