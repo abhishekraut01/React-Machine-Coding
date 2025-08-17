@@ -1,20 +1,22 @@
+import { useState } from "react";
+import "./App.css";
 
-import './App.css'
+function useToggle(initialValue = false) {
+  const [isOn, setIsOn] = useState(initialValue);
 
+  function toggle() {
+    setIsOn(prev => !prev);
+  }
 
-// ✅ Complete the custom hook below
-// function useToggle(initialValue = false) {
-//   // your code here
-// }
+  return [isOn, toggle];  // correct order: state first, then updater
+}
 
 export default function App() {
-  // ✅ Use the custom hook inside this component
-  // const [isOn, toggle] = useToggle(false);
+  const [isOn, toggle] = useToggle(false);
 
   return (
-    /* your toggle function for the onClick method */
-    <button data-testid="toggle-button">
-      {/* Render "ON" or "OFF" based on state */}
+    <button data-testid="toggle-button" onClick={toggle}>
+      {isOn ? "ON" : "OFF"}
     </button>
   );
 }
