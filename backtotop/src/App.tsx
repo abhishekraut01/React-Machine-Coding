@@ -1,37 +1,47 @@
 import { useEffect, useState } from "react";
+import '.App.css'
 
 function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    function scrollCallback() {
+      if (window.scrollY > 300) {
+        setIsVisible(true)
+      } else {
+        setIsVisible(false)
+      }
+    }
+    window.addEventListener("scroll", scrollCallback)
 
-    window.addEventListener("scroll", scrollToTop)
-
-    return removeEventListener("scroll", scrollToTop)
+    return () => {
+      removeEventListener("scroll", scrollCallback)
+    }
   }, []);
 
   function scrollToTop() {
-    if (window.scrollY > 300) {
-      setIsVisible(true)
-    }
 
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
+
   return (
     <div className="backToTop">
       <h1>Back To Top</h1>
 
-      {/* Add some content to enable scrolling */}
+      {[...Array(20).keys()].map((elem) => (
+        <h1 key={elem}>hello</h1>
+      ))}
+
 
       <div className="container">
         {/* Show this button only after scrolling down */}
-        {isVisible ? <button
+        {isVisible && <button
           className="backtotop-btn"
           onClick={scrollToTop}
           data-testid="back-to-top-btn"
         >
           Back to Top
-        </button> : ""}
+        </button>}
       </div>
     </div>
   );
