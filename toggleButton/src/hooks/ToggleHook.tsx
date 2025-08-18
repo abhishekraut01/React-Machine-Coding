@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
-export default function useToggle(initialState = false){
+type useToggeleType = [boolean , ()=>void] 
+
+export default function useToggle(initialState = false):useToggeleType{
     const [isOn , setIsOn] = useState(initialState)
 
     function toggle(){
