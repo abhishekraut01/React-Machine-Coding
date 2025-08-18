@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Aifiesta API Requester</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding:16px; min-width:350px; }
+    textarea { width: 100%; height: 140px; margin-bottom:10px; font-family: monospace; }
+    input, button { width: 100%; margin-bottom:10px; }
+    button { padding: 10px; font-weight: bold; }
+    .response { white-space: pre-wrap; max-height: 120px; overflow: auto; background: #f9f9f9; padding:8px; border-radius:4px; margin-top:10px; border:1px solid #ddd;}
+  </style>
+</head>
+<body>
+  <h2>Aifiesta API Request</h2>
+  <label>Authorization Token</label>
+  <input id="auth" placeholder="Bearer ..." />
+  <label>Cookies (optional)</label>
+  <input id="cookie" placeholder="cookie=..." />
+  <label>Request JSON</label>
+  <textarea id="json"></textarea>
+  <button id="sendBtn">Send</button>
+  <div id="result" class="response"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
