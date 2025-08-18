@@ -4,11 +4,18 @@ function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Add scroll event listener to toggle visibility
+
+    window.addEventListener("scroll", scrollToTop)
+
+    return removeEventListener("scroll", scrollToTop)
   }, []);
 
   function scrollToTop() {
-    // Implement smooth scroll to top
+    if (window.scrollY > 300) {
+      setIsVisible(true)
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" })
   }
   return (
     <div className="backToTop">
@@ -18,13 +25,13 @@ function BackToTop() {
 
       <div className="container">
         {/* Show this button only after scrolling down */}
-        <button
+        {isVisible ? <button
           className="backtotop-btn"
           onClick={scrollToTop}
           data-testid="back-to-top-btn"
         >
           Back to Top
-        </button>
+        </button> : ""}
       </div>
     </div>
   );
