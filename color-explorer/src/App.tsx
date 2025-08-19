@@ -12,7 +12,7 @@ function App() {
   }
 
   const handleSearch = () => {
-   
+
     if (inputText.trim()) {
       const colorInSmallLetter = inputText.trim().toLocaleLowerCase()
       const hex = colorNameToHex(colorInSmallLetter)
@@ -28,6 +28,7 @@ function App() {
     }
   }
 
+
   const handleOnKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSearch()
@@ -42,11 +43,11 @@ function App() {
         <div className="flex   gap-3">
           <input
             value={inputText}
-            onChange={(e) => handleInputChange(e)}
+            onChange={ handleInputChange}
             onKeyDown={handleOnKeyPress}
             className="border-1 py-2 px-5 w-70 rounded-md bg-white font-semibold" type="text" placeholder="Type a color name e.g. lavender" />
           <button
-            onSubmit={handleSearch}
+            onClick={handleSearch}
             className="bg-white py-2 px-3 rounded-md flex justify-center items-center hover:scale-105 ">
             <h1 className="text-xl cursor-pointer" >🔍</h1>
           </button>
