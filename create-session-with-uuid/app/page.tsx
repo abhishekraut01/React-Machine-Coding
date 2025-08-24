@@ -28,10 +28,11 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className=' h-screen w-full flex gap-3 pl-3 items-center '>
       <input
+      placeholder='Enter Session Id'
         onChange={(e) => handleInputChange(e)}
-        className="px-3 py-2 rounded-md"
+        className="px-3 py-2 rounded-xl border-purple-400 border-1"
         value={inputText}
         type="text" />
       <button
