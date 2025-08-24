@@ -1,9 +1,12 @@
+"use client"
+
 import { useRouter } from 'next/router';
 import { ChangeEvent, useState } from "react";
 
 export default function Home() {
   const [inputText, setInputText] = useState("")
-  const router = useRouter()
+  const [errorText , setErrorText] = useState("")
+  const router = useRouter();
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value)
   }
@@ -14,8 +17,10 @@ export default function Home() {
   }
 
   const handleJoinSession = () => {
-    const uuid = createRoomId()
-    router.push(`/session/${uuid}`);
+    if(inputText.length !== 5 ){
+      setErrorText("Seesion Id should be 5 character long")
+    }
+    router.push(`/session/${inputText}`);
   }
 
   const createRoomId = () => {
@@ -42,7 +47,8 @@ export default function Home() {
       >
         Create Session
       </button>
-   
+      <p>{errorText}</p>
+
     </div>
   );
 }
