@@ -1,69 +1,48 @@
-# React + TypeScript + Vite
+# Greeting App Problem Description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Create a **modern React application** that displays a real-time greeting message based on the current hour of the day and updates the **local time every second**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Functional Requirements
 
-## Expanding the ESLint configuration
+### Greeting Message Logic
+- **5 AM to 12 PM:** `Good Morning! ☀️`
+- **12 PM to 5 PM:** `Good Afternoon! 🌤️`
+- **5 PM to 9 PM:** `Good Evening! 🌆`
+- **9 PM to 5 AM:** `Good Night! 🌙✨`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Live Time Display
+- Show user's local time using `toLocaleTimeString()`.
+- Update every second with `setInterval`.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Visual Layout
+- Dark background.
+- Bright time card.
+- Responsive and centered.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Testability
+- Greeting element uses: `data-testid="greeting"`
+- Time display uses: `data-testid="time"`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Edge Cases & Constraints
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Automatic transition between greetings at time boundaries.
+- Support for both 24-hour and 12-hour system times.
+- `setInterval` is cleared on component unmount.
+- Ensure emojis and greeting logic do **not overlap**.
+- Greeting changes seamlessly, no user interaction required.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## Examples
+
+**Example 1:**  
+System Time: `2025-05-27T08:30:00`  
+Display Output: `Good Morning! ☀️ 08:30:00 AM`
+
+**Example 2:**  
+System Time: `2025-05-27T21:45:00`  
+Display Output: `Good Night! 🌙✨ 09:45:00 PM`
