@@ -8,11 +8,19 @@ export default function Home() {
     setInputText(e.target.value)
   }
 
-  const handleClick = ()=>{
-    router.push('/session');
+  const handleNewRoom = () => {
+    const uuid = createRoomId()
+    router.push(`/session/${uuid}`);
   }
 
-  const createRoomId
+  const handleJoinSession = () => {
+    const uuid = createRoomId()
+    router.push(`/session/${uuid}`);
+  }
+
+  const createRoomId = () => {
+    return Math.random().toString(36).substring(2, 7).toUpperCase();
+  };
 
   return (
     <div>
@@ -21,12 +29,20 @@ export default function Home() {
         className="px-3 py-2 rounded-md"
         value={inputText}
         type="text" />
-      <button 
-      className='bg-purple-400 px-3 py-2 rounded-2xl'
-      onClick={handleClick}
+      <button
+        className='bg-purple-400 px-3 py-2 rounded-2xl'
+        onClick={handleJoinSession}
       >
         Join Session
       </button>
+
+      <button
+        className='bg-purple-400 px-3 py-2 rounded-2xl'
+        onClick={handleNewRoom}
+      >
+        Create Session
+      </button>
+   
     </div>
   );
 }
