@@ -1,35 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import axios from "axios";
+import requestConfig from "./requestConfig";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [response, setResponse] = useState<string>("");
+
+  const sendRequest = async () => {
+    try {
+      const res = await axios.request(requestConfig);
+      setResponse(JSON.stringify(res.data, null, 2));
+    } catch (error: any) {
+      setResponse(
+        error?.response
+          ? JSON.stringify(error.response.data, null, 2)
+          : error.toString()
+      );
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div
+      style={{
+        maxWidth: 800,
+        margin: "2rem auto",
+        fontFamily: "Arial, sans-serif",
+        padding: "1rem",
+        backgroundColor: "#f9f9f9",
+        borderRadius: "8px",
+        boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+      }}
+    >
+      <button
+        onClick={sendRequest}
+        style={{
+          padding: "12px 24px",
+          fontSize: "16px",
+          fontWeight: "bold",
+          backgroundColor: "#007bff",
+          color: "#ffffff",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+          marginBottom: "1rem",
+          width: "100%",
+        }}
+      >
+        Send Request
+      </button>
 
-export default App
+      <pre
+        style={{
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
+          background: "#272822",
+          color: "#f8f8f2",
+          padding: "16px",
+          borderRadius: "6px",
+          minHeight: "300px",
+          overflowY: "auto",
+          fontSize: "14px",
+          fontFamily:
+            "'Fira Mono', 'Source Code Pro', Consolas, 'Courier New', monospace",
+        }}
+      >
+        {response || "Response will appear here after you send request."}
+      </pre>
+    </div>
+  );
+};
+
+export default App;
