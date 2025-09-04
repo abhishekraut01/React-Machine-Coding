@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 
 function getGreeting(hour) {
   if (hour >= 5 && hour < 12) return { text: "Good Morning", emoji: "☀️" };
