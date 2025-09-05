@@ -1,8 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../App.css'
 
 function ProgressBars() {
     const [progress, setProgress] = useState(0)
+    const [color, setColor] = useState("")
+
+
+
+    useEffect(() => {
+        function handlerColorChange() {
+            if (progress <= 30) {
+                setColor("red")
+            } else if (progress > 30 && progress <= 70) {
+                setColor("orange")
+            } else if (progress > 70) {
+                setColor("green")
+            }
+        }
+        handlerColorChange()
+    }, [progress])
 
     const handleIncreament = () => {
         setProgress((prev) => {
