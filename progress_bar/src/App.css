@@ -44,7 +44,7 @@ body {
 .progressFill {
   height: 100%;
   border-radius: 30px;
-  transition: width 0.2s;
+  transition: width 0.3s;
 }
 
 .progressText {
