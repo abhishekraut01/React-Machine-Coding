@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   background-size: border-box;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html,
@@ -26,14 +26,17 @@ body {
   padding: 30px;
 }
 
-.testBgColor{
+.testBgColor {
   width: 80%;
   height: 30px;
   background-color: red;
   border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.Button-div{
+.Button-div {
   display: flex;
   gap: 10px;
   height: 30px;
@@ -55,5 +58,5 @@ body {
   align-items: center;
   padding: 10px;
   border-radius: 5px;
-    cursor: pointer;
+  cursor: pointer;
 }
