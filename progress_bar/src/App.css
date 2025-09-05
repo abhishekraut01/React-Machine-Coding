@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   background-size: border-box;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html,
@@ -19,4 +20,40 @@ body {
   width: 700px;
   background-color: #fff;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
+
+.testBgColor{
+  width: 80%;
+  height: 30px;
+  background-color: red;
+  border-radius: 30px;
+}
+
+.Button-div{
+  display: flex;
+  gap: 10px;
+  height: 30px;
+  width: 130px;
+}
+
+.Button-div button:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Button-div button:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+    cursor: pointer;
 }
