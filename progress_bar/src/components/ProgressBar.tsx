@@ -6,14 +6,22 @@ function ProgressBars() {
 
     const handleIncreament = () => {
         setProgress((prev) => {
-            if(prev === 100){
-                prev + 10
+            if (prev < 100) {
+                return prev + 10
+            } else {
+                return 100
             }
         })
     }
 
     const handleDecreament = () => {
-        setProgress((prev) => prev - 10)
+        setProgress((prev) => {
+            if (prev > 0) {
+                return prev - 10
+            } else {
+                return 0
+            }
+        })
     }
 
     return (
